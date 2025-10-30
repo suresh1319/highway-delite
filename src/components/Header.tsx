@@ -6,8 +6,11 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange }) => {
-  // Using a direct path to the logo
-  const logo = '/logo.png';
+  // Use the correct logo path based on environment
+  const isProduction = import.meta.env.PROD;
+  const logo = isProduction 
+    ? 'https://highway-delite-1-8o83.onrender.com/logo.png'
+    : 'http://localhost:3001/logo.png';
 
   return (
     <header className="bg-white shadow-sm px-4 py-4">

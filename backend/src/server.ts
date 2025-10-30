@@ -32,25 +32,26 @@ mongoose.connect(MONGODB_URI)
 app.use(cors());
 app.use(express.json());
 
-// Serve static images
-app.use('/assets', express.static(path.join(__dirname, '../../public/assets')));
+// Serve static files from the public directory
+const publicPath = path.join(__dirname, '../public');
+app.use(express.static(publicPath));
+
+// Serve logo directly with error handling
+app.get('/logo.png', (req, res) => {
+  const logoPath = path.join(publicPath, 'logo.png');
+  res.sendFile(logoPath, (err) => {
+    if (err) {
+      console.log('Logo not found, serving default logo');
+      res.sendFile(path.join(__dirname, 'default-logo.png'));
+    }
+  });
+});
 
 // Routes
 app.use('/api/experiences', experiencesRouter);
 app.use('/api/bookings', bookingsRouter);
 app.use('/api/promo', promoRouter);
 
-// Logo endpoint
-app.get('/api/logo', (req: Request, res: Response) => {
-  try {
-    // Use require for JSON files in CommonJS
-    const images = require('./data/images.json');
-    res.json({ logo: images['Logo.png'] });
-  } catch (error) {
-    console.error('Error loading images:', error);
-    res.status(500).json({ error: 'Failed to load images' });
-  }
-});
 
 // Health check
 app.get('/health', (req: Request, res: Response) => {
