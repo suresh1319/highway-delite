@@ -3,7 +3,7 @@
 A complete fullstack web application for booking travel experiences with slot management.
 
 ## 🚀 Live Demo
-- **Frontend**: [Coming Soon - Deploy to Vercel]
+- **Frontend**: https://highway-delite-3-pyo4.onrender.com
 - **Backend API**: https://highway-delite-1-8o83.onrender.com
 
 ## ✨ Features
