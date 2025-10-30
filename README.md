@@ -4,7 +4,7 @@ A complete fullstack web application for booking travel experiences with slot ma
 
 ## 🚀 Live Demo
 - **Frontend**: [Coming Soon - Deploy to Vercel]
-- **Backend API**: [Coming Soon - Deploy to Railway/Render]
+- **Backend API**: https://highway-delite-1-8o83.onrender.com
 
 ## ✨ Features
 
@@ -79,6 +79,11 @@ npm install
 ```
 
 4. **Configure Environment Variables**:
+Create `.env` file in root directory:
+```env
+VITE_API_URL=https://highway-delite-1-8o83.onrender.com
+```
+
 Create `.env` file in `backend/` directory:
 ```env
 MONGODB_URI=mongodb://localhost:27017/bookit
@@ -144,7 +149,7 @@ npm run dev
 
 3. **Environment Variables**:
    ```
-   VITE_API_URL=https://your-backend-url.railway.app/api
+   VITE_API_URL=https://highway-delite-1-8o83.onrender.com
    ```
 
 ### Backend Deployment (Railway)
@@ -167,8 +172,8 @@ npm run dev
    NODE_ENV=production
    ```
 
-4. **Update Frontend API URL**:
-   Update `src/services/api.ts` with your deployed backend URL
+4. **Frontend Configuration**:
+   The frontend automatically uses the deployed backend URL from environment variables
 
 ### Alternative: Render Deployment
 
@@ -213,9 +218,10 @@ npm run seed         # Seed database with sample data
 ### Common Issues
 
 **Frontend not loading**:
-- Check if backend is running on port 3001
-- Verify API_BASE_URL in `src/services/api.ts`
+- Check if backend is running on port 3001 (local) or deployed URL
+- Verify VITE_API_URL in `.env` file
 - Check browser console for errors
+- Ensure `.env` file exists in root directory
 
 **Backend connection errors**:
 - Ensure MongoDB is running

@@ -52,11 +52,6 @@ app.use('/api/experiences', experiencesRouter);
 app.use('/api/bookings', bookingsRouter);
 app.use('/api/promo', promoRouter);
 
-// Root endpoint
-app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'Highway Delite API', status: 'running' });
-});
-
 // Health check
 app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
