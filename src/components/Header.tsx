@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 interface HeaderProps {
   searchTerm: string;
@@ -6,14 +6,8 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange }) => {
-  const [logo, setLogo] = useState('');
-
-  useEffect(() => {
-    fetch('http://localhost:3001/api/logo')
-      .then(res => res.json())
-      .then(data => setLogo(data.logo))
-      .catch(() => {});
-  }, []);
+  // Using a direct path to the logo
+  const logo = '/logo.png';
 
   return (
     <header className="bg-white shadow-sm px-4 py-4">
