@@ -1,15 +1,25 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 
 const router = Router();
 
-const promoCodes = {
+interface PromoCode {
+  discount: number;
+  valid: boolean;
+  type?: string;
+}
+
+interface PromoCodes {
+  [key: string]: PromoCode;
+}
+
+const promoCodes: PromoCodes = {
   'SAVE10': { discount: 10, valid: true },
   'FLAT100': { discount: 100, valid: true, type: 'flat' },
   'WELCOME20': { discount: 20, valid: true }
 };
 
 // POST /api/promo/validate - Validate promo code
-router.post('/validate', (req, res) => {
+router.post('/validate', (req: Request<{}, {}, { code: string }>, res: Response) => {
   const { code } = req.body;
 
   if (!code) {

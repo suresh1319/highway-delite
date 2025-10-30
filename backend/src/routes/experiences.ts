@@ -1,10 +1,10 @@
-import { Router } from 'express';
-import Experience from '../models/Experience';
+import { Router, Request, Response } from 'express';
+import Experience, { IExperience } from '../models/Experience';
 
 const router = Router();
 
 // GET /api/experiences - Get all experiences
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
     const experiences = await Experience.find();
     res.json(experiences);
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET /api/experiences/:id - Get experience by ID
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
   try {
     const { id } = req.params;
     const experience = await Experience.findById(id);

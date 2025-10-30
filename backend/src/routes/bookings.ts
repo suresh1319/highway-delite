@@ -1,10 +1,10 @@
-import { Router } from 'express';
-import Booking from '../models/Booking';
+import { Router, Request, Response } from 'express';
+import Booking, { IBooking } from '../models/Booking';
 
 const router = Router();
 
 // POST /api/bookings - Create a new booking
-router.post('/', async (req, res) => {
+router.post('/', async (req: Request, res: Response) => {
   try {
     const { experienceId, date, time, quantity, fullName, email, promoCode, total } = req.body;
 
