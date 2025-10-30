@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { bookingService, promoService } from '../services/api';
+import { promoService } from '../services/api';
 
 const Checkout: React.FC = () => {
   const location = useLocation();
